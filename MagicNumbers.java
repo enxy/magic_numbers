@@ -67,8 +67,25 @@ public class MagicNumbers {
         return exists;
     }
 
+    public void compareFileTypes(String fileName) {
+        String realFileType = "";
+        String ext = "";
+
+        try {
+            int i = fileName.lastIndexOf('.');
+            System.out.println(i);
+            if (i>0) {
+                
+            } else {
+                throw new ExtensionException("File lack of extension, check corectness of file path");
+            }
+        } catch (ExtensionException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
     public static void main(String[] args) {
         MagicNumbers mg = new MagicNumbers();
-        System.out.println(mg.searchMagicNumber("../po/README.txt"));
+        mg.compareFileTypes("../po/README.txt");
     }
 }
