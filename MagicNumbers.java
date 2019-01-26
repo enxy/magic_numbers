@@ -17,6 +17,10 @@ public class MagicNumbers {
         signatures.put("pdf", pdf);
     }
 
+    public Set getAvailableExt() {
+        return signatures.keySet();
+    }
+
     public static void main(String[] args) {
         MagicNumbers mg = new MagicNumbers();
         System.out.println(mg);
