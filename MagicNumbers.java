@@ -41,7 +41,10 @@ public class MagicNumbers {
             }
             for (Iterator<String> i = signatures.keySet().iterator(); i.hasNext();) {
                 String key = i.next();
-                System.out.println(key);
+                if (findMatches(signatures.get(key), buffer, a)) {
+                    fileType = key;
+                    break;
+                }
             }
             fileStream.close();
         } catch (FileNotFoundException e) {
@@ -53,7 +56,16 @@ public class MagicNumbers {
         return fileType;
     }
 
-
+    private static boolean findMatches(int[] signature, byte[] buffer, int size) {
+        boolean exists = true;
+        for (int i = 0; i < signature.length; i++) {
+            if (signature[i] != (0x00ff & buffer[i])) {
+                exists = false;
+                break;
+            }
+        }
+        return exists;
+    }
 
     public static void main(String[] args) {
         MagicNumbers mg = new MagicNumbers();
