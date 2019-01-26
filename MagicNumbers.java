@@ -73,11 +73,22 @@ public class MagicNumbers {
 
         try {
             int i = fileName.lastIndexOf('.');
-            System.out.println(i);
+
             if (i>0) {
-                
+                ext = fileName.substring(i+1);
+                if (getAvailableExt().contains(ext)) {
+                    realFileType = searchMagicNumber(fileName);
+
+                    if (Objects.equals(ext, realFileType)) {
+                        System.out.println(ext + " file is  a " + realFileType + " file.");
+                    } else {
+                        System.out.println("Extension is " + ext + ", while actually it's a " + realFileType);
+                    }
+                } else {
+                    throw new ExtensionException("Sorry, extension not available");
+                }
             } else {
-                throw new ExtensionException("File lack of extension, check corectness of file path");
+                throw new ExtensionException("File lacks of extension, check corectness of the file path");
             }
         } catch (ExtensionException e) {
             System.out.println(e.getMessage());
