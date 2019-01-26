@@ -5,6 +5,13 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.IOException;
 
+/**
+    Class enabling to check if file type complies with
+    its exctension using magic numbers. Available file types to check:
+    JPG, GIF, PNG, TXT, PDF.
+
+    @author Jolanta Plewa  
+ */
 public class MagicNumbers {
     private Map<String,int[]> signatures;
     private static final int SIZE_OF_BUFFER = 4*1024;
@@ -93,10 +100,5 @@ public class MagicNumbers {
         } catch (ExtensionException e) {
             System.out.println(e.getMessage());
         }
-    }
-
-    public static void main(String[] args) {
-        MagicNumbers mg = new MagicNumbers();
-        mg.compareFileTypes("../po/README.txt");
     }
 }
