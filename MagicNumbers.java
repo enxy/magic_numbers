@@ -39,7 +39,10 @@ public class MagicNumbers {
             for (int x = content; (x < SIZE_OF_SIGNATURE) && (content > 0); x += content) {
                 content = fileStream.read(buffer, x, SIZE_OF_BUFFER - x);
             }
-            System.out.println(a);
+            for (Iterator<String> i = signatures.keySet().iterator(); i.hasNext();) {
+                String key = i.next();
+                System.out.println(key);
+            }
             fileStream.close();
         } catch (FileNotFoundException e) {
             System.out.println("Please give relative file path to method. Exception occured: " + e.getMessage());
@@ -49,6 +52,8 @@ public class MagicNumbers {
 
         return fileType;
     }
+
+
 
     public static void main(String[] args) {
         MagicNumbers mg = new MagicNumbers();
